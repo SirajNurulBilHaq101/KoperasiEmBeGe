@@ -49,6 +49,12 @@ Route::middleware('auth')->group(function () {
     // Categories
     Route::get('/kategori-barang', [CategoryController::class, 'index'])
         ->name('kategori-barang.index');
+    Route::post('/kategori', [CategoryController::class, 'store'])
+        ->name('kategori.store');
+    Route::delete('/kategori/{category}', [CategoryController::class, 'destroy'])
+        ->name('kategori.destroy');
+
+
     // Logout
     Route::post('/logout', [AuthController::class, 'logout']);
 });

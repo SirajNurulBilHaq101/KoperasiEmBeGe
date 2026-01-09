@@ -19,13 +19,13 @@
 
                 <thead>
                     <tr>
-                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">
                             Kode
                         </th>
-                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">
                             Nama Barang
                         </th>
-                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">
                             Kategori
                         </th>
                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">
@@ -37,7 +37,7 @@
                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">
                             Kadaluarsa
                         </th>
-                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">
                             Deskripsi
                         </th>
                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">
@@ -47,17 +47,17 @@
                 </thead>
 
                 <tbody>
-                    @foreach ($items as $item)
+                    @forelse ($items as $item)
                         <tr>
                             {{-- CODE --}}
-                            <td>
+                            <td class="align-middle text-center">
                                 <span class="text-xs font-weight-bold">
                                     {{ $item->code }}
                                 </span>
                             </td>
 
                             {{-- NAME --}}
-                            <td>
+                            <td class="align-middle text-center">
                                 <h6 class="mb-0 text-xs">{{ $item->name }}</h6>
                                 <p class="text-xs text-secondary mb-0">
                                     {{ $item->unit }}
@@ -65,7 +65,7 @@
                             </td>
 
                             {{-- CATEGORY --}}
-                            <td>
+                            <td class="align-middle text-center">
                                 <span class="text-xs text-secondary">
                                     {{ $item->category->name ?? '-' }}
                                 </span>
@@ -93,7 +93,7 @@
                             </td>
 
                             {{-- DESCRIPTION --}}
-                            <td>
+                            <td class="align-middle text-center">
                                 <span class="text-xs text-secondary">
                                     {{ $item->description ?? '-' }}
                                 </span>
@@ -112,8 +112,16 @@
                                 </form>
                             </td>
                         </tr>
-                    @endforeach
+
+                    @empty
+                        <tr>
+                            <td colspan="8" class="text-center text-xs text-secondary py-4">
+                                Belum ada barang
+                            </td>
+                        </tr>
+                    @endforelse
                 </tbody>
+
 
             </table>
         </div>
