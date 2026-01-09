@@ -11,9 +11,9 @@ class ItemSeeder extends Seeder
 {
     public function run(): void
     {
-        $sayur = Category::where('code', 'SAYUR')->first();
-        $buah  = Category::where('code', 'BUAH')->first();
-        $pokok = Category::where('code', 'BAHAN_POKOK')->first();
+        $sayur = Category::where('code', 'SAYUR')->firstOrFail();
+        $buah  = Category::where('code', 'BUAH')->firstOrFail();
+        $pokok = Category::where('code', 'BAHAN_POKOK')->firstOrFail();
 
         $items = [
             [
@@ -45,12 +45,12 @@ class ItemSeeder extends Seeder
             ],
             [
                 'category_id' => $pokok->id,
-                'code'        => 'POKOK-BERAS',
+                'code'        => 'BAHANPOKOK-BERAS',
                 'name'        => 'Beras Medium',
                 'unit'        => 'kg',
                 'unit_price'  => 11000,
                 'quantity'    => 100,
-                'expired_at'  => null, // beras santai
+                'expired_at'  => null,
             ],
         ];
 

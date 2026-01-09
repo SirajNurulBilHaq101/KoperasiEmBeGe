@@ -1,10 +1,18 @@
 <x-layout>
-    <div class="ms-3">
+    <div class="mb-3">
         <h3 class="mb-0 h4 font-weight-bolder">Data Barang</h3>
         <p class="mb-2">
             Tabel data barang yang tersedia di inventaris.
         </p>
     </div>
+
+    @if (session('success'))
+        <div class="alert alert-success text-white">
+            {{ session('success') }}
+        </div>
+    @endif
+
+
     <div class="card">
         <div class="table-responsive">
             <table class="table align-items-center mb-0">
@@ -93,9 +101,15 @@
 
                             {{-- ACTION --}}
                             <td class="align-middle text-center">
-                                <a href="#" class="text-secondary text-xs">
-                                    Edit
-                                </a>
+                                <form action="{{ route('data-barang.destroy', $item->id) }}" method="POST"
+                                    onsubmit="return confirm('Yakin ingin menghapus barang ini?')">
+                                    @csrf
+                                    @method('DELETE')
+
+                                    <button type="submit" class="btn btn-outline-danger btn-sm">
+                                        Hapus
+                                    </button>
+                                </form>
                             </td>
                         </tr>
                     @endforeach
@@ -104,4 +118,125 @@
             </table>
         </div>
     </div>
+
+    <div class="card mt-4">
+        <div class="card-body">
+
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="mb-3">
+                        <h3 class="mb-0 h4 font-weight-bolder">Tambah Barang</h3>
+                        <p class="mb-0">
+                            Barang yang ditambahkan akan masuk kedalam data aplikasi.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <button type="button" class="btn btn-icon btn-3 btn-info btn-lg w-100 mt-3" data-bs-toggle="modal"
+                        data-bs-target="#modalTambahBarang">
+                        <span class="btn-inner--icon">
+                            <i class="material-symbols-rounded">add</i>
+                        </span>
+                        <span class="btn-inner--text">Tambah Barang</span>
+                    </button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalTambahBarang" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+
+                <form action="{{ route('data-barang.store') }}" method="POST">
+                    @csrf
+
+                    <div class="modal-header">
+                        <h5 class="modal-title">Tambah Data Barang</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        <div class="row">
+
+                            <!-- Kategori -->
+                            <div class="col-md-6">
+                                <div class="input-group input-group-static my-3">
+                                    <label>Kategori</label>
+                                    <select name="category_id" class="form-control" required>
+                                        <option value="" hidden></option>
+                                        @foreach ($categories as $cat)
+                                            <option value="{{ $cat->id }}">{{ $cat->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- Nama -->
+                            <div class="col-md-6">
+                                <div class="input-group input-group-static my-3">
+                                    <label>Nama Barang</label>
+                                    <input type="text" name="name" class="form-control" required>
+                                </div>
+                            </div>
+
+                            <!-- Satuan -->
+                            <div class="col-md-6">
+                                <div class="input-group input-group-static my-3">
+                                    <label>Satuan (kg / pcs / liter)</label>
+                                    <input type="text" name="unit" class="form-control" required>
+                                </div>
+                            </div>
+
+                            <!-- Harga -->
+                            <div class="col-md-6">
+                                <div class="input-group input-group-static my-3">
+                                    <label>Harga Satuan</label>
+                                    <input type="number" name="unit_price" class="form-control" min="0">
+                                </div>
+                            </div>
+
+                            <!-- Stok -->
+                            <div class="col-md-6">
+                                <div class="input-group input-group-static my-3">
+                                    <label>Jumlah</label>
+                                    <input type="number" name="quantity" class="form-control" min="0">
+                                </div>
+                            </div>
+
+                            <!-- Expired -->
+                            <div class="col-md-6">
+                                <div class="input-group input-group-static my-3">
+                                    <label>Tanggal Kadaluarsa</label>
+                                    <input type="date" name="expired_at" class="form-control">
+                                </div>
+                            </div>
+
+                            <!-- Deskripsi -->
+                            <div class="col-12">
+                                <div class="input-group input-group-static my-3">
+                                    <label>Deskripsi</label>
+                                    <textarea name="description" class="form-control" rows="3"></textarea>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">
+                            Batal
+                        </button>
+                        <button type="submit" class="btn bg-gradient-primary">
+                            Simpan
+                        </button>
+                    </div>
+                </form>
+
+
+            </div>
+        </div>
+    </div>
+
 </x-layout>

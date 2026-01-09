@@ -36,8 +36,15 @@ Route::middleware('auth')->group(function () {
     });
 
     // Master Data (pakai controller)
+    // Items
     Route::get('/data-barang', [ItemController::class, 'index'])
         ->name('data-barang.index');
+    Route::post('/data-barang', [ItemController::class, 'store'])
+        ->name('data-barang.store');
+    Route::delete('/data-barang/{item}', [ItemController::class, 'destroy'])
+        ->name('data-barang.destroy');
+
+
 
     // Categories
     Route::get('/kategori-barang', [CategoryController::class, 'index'])
