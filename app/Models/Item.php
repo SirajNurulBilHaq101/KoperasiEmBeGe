@@ -11,6 +11,7 @@ class Item extends Model
 
     protected $fillable = [
         'category_id',
+        'user_id',
         'code',
         'name',
         'unit',
@@ -25,6 +26,12 @@ class Item extends Model
         'quantity'   => 'decimal:2',
         'expired_at' => 'date',
     ];
+
+    // Relasi: user
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 
     /**
      * Relasi: item milik satu kategori
@@ -41,5 +48,20 @@ class Item extends Model
     public function getTotalPriceAttribute()
     {
         return $this->unit_price * $this->quantity;
+    }
+    /**
+     * Relasi: item memiliki banyak transaksi
+     */
+    public function transactions()
+    {
+        return $this->hasMany(ItemTransaction::class);
+    }
+
+    /**
+     * Relasi: item dimiliki banyak order item
+     */
+    public function orderItems()
+    {
+        return $this->hasMany(OrderItem::class);
     }
 }

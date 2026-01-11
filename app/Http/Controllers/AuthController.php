@@ -30,7 +30,7 @@ class AuthController extends Controller
             $role = $user->role;
 
 
-            return redirect('/dashboard');
+            return redirect('/');
         }
 
         return back()->withErrors([

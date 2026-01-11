@@ -18,9 +18,14 @@ return new class extends Migration
                 ->constrained('categories')
                 ->cascadeOnDelete();
 
+            // PENAMBAHAN INI
+            $table->foreignId('user_id')
+                ->constrained('users')
+                ->cascadeOnDelete();
+
             $table->string('code', 50)->unique();
             $table->string('name');
-            $table->string('unit', 20); // kg, pcs, ikat, liter
+            $table->string('unit', 20);
             $table->decimal('unit_price', 15, 2)->default(0);
             $table->decimal('quantity', 15, 2)->default(0);
 
@@ -30,6 +35,7 @@ return new class extends Migration
             $table->timestamps();
         });
     }
+
 
     /**
      * Reverse the migrations.

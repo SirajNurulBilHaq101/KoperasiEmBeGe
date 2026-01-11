@@ -18,6 +18,7 @@ class ItemSeeder extends Seeder
         $items = [
             [
                 'category_id' => $sayur->id,
+                'user_id' => 1,
                 'code'        => 'SAYUR-BAYAM',
                 'name'        => 'Bayam Hijau',
                 'unit'        => 'ikat',
@@ -27,6 +28,7 @@ class ItemSeeder extends Seeder
             ],
             [
                 'category_id' => $sayur->id,
+                'user_id' => 1,
                 'code'        => 'SAYUR-WORTEL',
                 'name'        => 'Wortel',
                 'unit'        => 'kg',
@@ -36,6 +38,7 @@ class ItemSeeder extends Seeder
             ],
             [
                 'category_id' => $buah->id,
+                'user_id' => 1,
                 'code'        => 'BUAH-PISANG',
                 'name'        => 'Pisang',
                 'unit'        => 'sisir',
@@ -45,6 +48,7 @@ class ItemSeeder extends Seeder
             ],
             [
                 'category_id' => $pokok->id,
+                'user_id' => 1,
                 'code'        => 'BAHANPOKOK-BERAS',
                 'name'        => 'Beras Medium',
                 'unit'        => 'kg',

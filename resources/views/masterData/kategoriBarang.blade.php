@@ -1,6 +1,6 @@
 <x-layout>
     <div class="mb-3">
-        <h3 class="mb-0 h4 font-weight-bolder">Kategori Barang</h3>
+        <h3 class="mb-0 h2 font-weight-bolder">Kategori Barang</h3>
         <p class="mb-2">
             Tabel Kategori barang yang tersedia untuk inventaris.
         </p>
@@ -90,6 +90,9 @@
                     @endforelse
                 </tbody>
             </table>
+            <div class="d-flex justify-content-center mt-3 px-3">
+                {{ $categories->links() }}
+            </div>
         </div>
     </div>
 

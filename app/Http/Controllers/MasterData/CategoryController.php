@@ -11,7 +11,7 @@ class CategoryController extends Controller
 {
     public function index()
     {
-        $categories = Category::orderBy('name')->get();
+        $categories = Category::orderBy('name')->paginate(5);
         return view('masterData.kategoriBarang', compact('categories'));
     }
 

@@ -16,6 +16,24 @@ class AdminUserSeeder extends Seeder
             'password' => Hash::make('adminadmin'),
             'role' => 'admin',
         ]);
+        User::create([
+            'name' => 'Raja Lapangan',
+            'email' => 'lapangan@lapangan.com',
+            'password' => Hash::make('lapanganlapangan'),
+            'role' => 'karyawan_lapangan',
+        ]);
+        User::create([
+            'name' => 'Raja Dashboard',
+            'email' => 'dashboard@dashboard.com',
+            'password' => Hash::make('dashboarddashboard'),
+            'role' => 'operator_dashboard',
+        ]);
+        User::create([
+            'name' => 'Raja User',
+            'email' => 'user@user.com',
+            'password' => Hash::make('useruser'),
+            'role' => 'user',
+        ]);
     }
 }
 

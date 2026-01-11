@@ -1,6 +1,6 @@
 <x-layout>
     <div class="mb-3">
-        <h3 class="mb-0 h4 font-weight-bolder">Data Barang</h3>
+        <h3 class="mb-0 h2 font-weight-bolder">Data Barang</h3>
         <p class="mb-2">
             Tabel data barang yang tersedia di inventaris.
         </p>
@@ -36,6 +36,9 @@
                         </th>
                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">
                             Kadaluarsa
+                        </th>
+                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">
+                            Input By
                         </th>
                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">
                             Deskripsi
@@ -92,6 +95,12 @@
                                 </span>
                             </td>
 
+                            <td class="align-middle text-center">
+                                <span class="text-xs text-secondary">
+                                    {{ $item->user->name ?? '-' }}
+                                </span>
+                            </td>
+
                             {{-- DESCRIPTION --}}
                             <td class="align-middle text-center">
                                 <span class="text-xs text-secondary">
@@ -120,10 +129,13 @@
                             </td>
                         </tr>
                     @endforelse
+
                 </tbody>
-
-
             </table>
+            
+            <div class="d-flex justify-content-center mt-3 px-3">
+                    {{ $items->links() }}
+            </div>
         </div>
     </div>
 
