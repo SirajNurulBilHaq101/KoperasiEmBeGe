@@ -1,4 +1,10 @@
 <x-layout>
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            {{ $errors->first() }}
+        </div>
+    @endif
+
     <div class="mb-0">
         <h3 class="mb-0 h2 font-weight-bolder">Daftar Pesanan User</h3>
         <p class="mb-2">Lihat semua pesanan, bukti pembayaran, dan ubah status langsung dari table.</p>

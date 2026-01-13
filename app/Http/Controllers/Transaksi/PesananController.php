@@ -36,12 +36,29 @@ class PesananController extends Controller
 
         DB::transaction(function () use ($order, $request) {
 
+            // =============================
+            // CEK STOK SEBELUM CONFIRM
+            // =============================
             if ($order->status === 'pending' && $request->status === 'confirmed') {
+
+                foreach ($order->items as $orderItem) {
+                    if ($orderItem->item->quantity < $orderItem->qty) {
+                        return back()->withErrors([
+                            'stock' => 'Stok tidak mencukupi untuk mengkonfirmasi pesanan.'
+                        ]);
+                        
+                    }
+                }
+
+                // Jika semua stok aman, baru kurangi
                 foreach ($order->items as $orderItem) {
                     $orderItem->item->decrement('quantity', $orderItem->qty);
                 }
             }
 
+            // =============================
+            // JIKA CONFIRMED → CANCELLED
+            // =============================
             if ($order->status === 'confirmed' && $request->status === 'cancelled') {
                 foreach ($order->items as $orderItem) {
                     $orderItem->item->increment('quantity', $orderItem->qty);
