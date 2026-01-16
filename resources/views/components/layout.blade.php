@@ -34,6 +34,28 @@
             flex-wrap: nowrap;
         }
     </style>
+
+    <!--data tables-->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <link
+        href="https://cdn.datatables.net/v/bs5/jszip-3.10.1/dt-2.3.6/af-2.7.1/b-3.2.6/b-colvis-3.2.6/b-html5-3.2.6/b-print-3.2.6/cr-2.1.2/cc-1.2.0/date-1.6.3/fc-5.0.5/fh-4.0.5/kt-2.12.2/r-3.0.7/rg-1.6.0/rr-1.5.0/sc-2.4.3/sb-1.8.4/sp-2.3.5/sl-3.1.3/sr-1.4.3/datatables.min.css"
+        rel="stylesheet" integrity="sha384-MGpQUgnL9pMd/CmvsbNc28ZPwfzI/Pxk5Oidukg5Cnwg+zS/3wdRBqmfm+QcNguT"
+        crossorigin="anonymous">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"
+        integrity="sha384-VFQrHzqBh5qiJIU0uGU5CIW3+OWpdGGJM9LBnGbuIH2mkICcFZ7lPd/AAtI7SNf7" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"
+        integrity="sha384-/RlQG9uf0M2vcTw3CX7fbqgbj/h8wKxw7C3zu9/GxcBPRKOEcESxaxufwRXqzq6n" crossorigin="anonymous">
+    </script>
+    <script
+        src="https://cdn.datatables.net/v/bs5/jszip-3.10.1/dt-2.3.6/af-2.7.1/b-3.2.6/b-colvis-3.2.6/b-html5-3.2.6/b-print-3.2.6/cr-2.1.2/cc-1.2.0/date-1.6.3/fc-5.0.5/fh-4.0.5/kt-2.12.2/r-3.0.7/rg-1.6.0/rr-1.5.0/sc-2.4.3/sb-1.8.4/sp-2.3.5/sl-3.1.3/sr-1.4.3/datatables.min.js"
+        integrity="sha384-+e7ayQvizn7mY6ZeDh1LlO4ozNkqSKlX7JzlOBwx7fZ2BQLXamqfS+abLjxpeOoK" crossorigin="anonymous">
+    </script>
+    @stack('scripts')
+
+
 </head>
 
 <body class="g-sidenav-show  bg-gray-100">

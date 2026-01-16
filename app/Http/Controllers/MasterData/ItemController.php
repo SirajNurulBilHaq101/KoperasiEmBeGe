@@ -15,9 +15,7 @@ class ItemController extends Controller
 {
     public function index()
     {
-        $items = Item::with('category')
-            ->orderBy('created_at', 'desc')
-            ->paginate(5);
+        $items = Item::with(['category', 'user'])->get();
 
         $categories = Category::where('is_active', true)->get();
 

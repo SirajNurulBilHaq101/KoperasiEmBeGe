@@ -13,8 +13,8 @@
     @endif
 
     <div class="card">
-        <div class="table-responsive">
-            <table class="table align-items-center mb-0">
+        <div class="table-responsive px-3 py-3">
+            <table id="kategoriTable" class="table table-striped table-hover align-items-center mb-0 w-100">
                 <thead>
                     <tr>
                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">
@@ -90,9 +90,6 @@
                     @endforelse
                 </tbody>
             </table>
-            <div class="d-flex justify-content-center mt-3 px-3">
-                {{ $categories->links() }}
-            </div>
         </div>
     </div>
 
@@ -169,4 +166,29 @@
             </div>
         </div>
     </div>
+
+    @push('scripts')
+        <script>
+            $(document).ready(function() {
+                $('#kategoriTable').DataTable({
+                    pageLength: 10,
+                    columnDefs: [{
+                        orderable: false,
+                        targets: 4 // kolom Aksi
+                    }],
+                    language: {
+                        search: "Cari:",
+                        lengthMenu: "Tampilkan _MENU_ data",
+                        info: "Menampilkan _START_ sampai _END_ dari _TOTAL_ data",
+                        zeroRecords: "Data tidak ditemukan",
+                        paginate: {
+                            next: "›",
+                            previous: "‹"
+                        }
+                    }
+                });
+            });
+        </script>
+    @endpush
+
 </x-layout>

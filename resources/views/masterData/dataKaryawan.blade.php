@@ -5,24 +5,30 @@
             Tabel karyawan yang terdaftar pada sistem.
         </p>
     </div>
-    
+
 
     {{-- TABEL --}}
     <div class="card mb-4">
-        <div class="table-responsive">
-            <table class="table align-items-center mb-0">
+        <div class="table-responsive px-3 py-3">
+            <table id="karyawanTable" class="table table-striped table-hover align-items-center mb-0 w-100">
+
                 <thead>
                     <tr>
-                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">Nama
+                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">
+                            Nama
                         </th>
                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">
-                            Email</th>
-                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">Role
+                            Email
                         </th>
-                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">Aksi
+                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">
+                            Role
+                        </th>
+                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">
+                            Aksi
                         </th>
                     </tr>
                 </thead>
+
                 <tbody>
                     @forelse ($karyawans as $karyawan)
                         <tr>
@@ -56,12 +62,6 @@
             </table>
         </div>
 
-        {{-- PAGINATION --}}
-        <div class="d-flex justify-content-center mt-3 px-3">
-            <div class="overflow-auto">
-                {{ $karyawans->links() }}
-            </div>
-        </div>
     </div>
 
     {{-- FORM TAMBAH --}}
@@ -101,4 +101,30 @@
             </form>
         </div>
     </div>
+
+    @push('scripts')
+        <script>
+            $(document).ready(function() {
+                $('#karyawanTable').DataTable({
+                    pageLength: 10,
+                    columnDefs: [{
+                        orderable: false,
+                        targets: 3 // kolom Aksi
+                    }],
+                    language: {
+                        search: "Cari:",
+                        lengthMenu: "Tampilkan _MENU_ data",
+                        info: "Menampilkan _START_ sampai _END_ dari _TOTAL_ data",
+                        zeroRecords: "Data tidak ditemukan",
+                        paginate: {
+                            next: "›",
+                            previous: "‹"
+                        }
+                    }
+                });
+            });
+        </script>
+    @endpush
+
+
 </x-layout>

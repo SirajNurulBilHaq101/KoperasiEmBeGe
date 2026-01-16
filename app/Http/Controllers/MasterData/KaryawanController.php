@@ -16,7 +16,8 @@ class KaryawanController extends Controller
             'operator_dashboard'
         ])
             ->orderBy('name')
-            ->paginate(10);
+            ->get();
+
 
         return view('masterData.dataKaryawan', compact('karyawans'));
     }

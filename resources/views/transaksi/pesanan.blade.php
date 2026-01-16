@@ -14,8 +14,9 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body px-0 pt-0 pb-2">
-                    <div class="table-responsive p-0">
-                        <table class="table align-items-center mb-0 text-center">
+                    <div class="table-responsive px-3 py-3">
+                        <table id="orderTable"
+                            class="table table-striped table-hover align-items-center mb-0 w-100 text-center">
                             <thead>
                                 <tr>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder">#</th>
@@ -240,6 +241,32 @@
             });
         });
     </script>
+
+    @push('scripts')
+        <script>
+            $(document).ready(function() {
+                $('#orderTable').DataTable({
+                    pageLength: 10,
+                    scrollX: true,
+                    columnDefs: [{
+                            orderable: false,
+                            targets: [6, 7]
+                        } // Aksi & Detail
+                    ],
+                    language: {
+                        search: "Cari:",
+                        lengthMenu: "Tampilkan _MENU_ data",
+                        info: "Menampilkan _START_ sampai _END_ dari _TOTAL_ data",
+                        zeroRecords: "Data tidak ditemukan",
+                        paginate: {
+                            next: "›",
+                            previous: "‹"
+                        }
+                    }
+                });
+            });
+        </script>
+    @endpush
 
 
 </x-layout>
